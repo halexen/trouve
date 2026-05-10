@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trouvé — Paiement réussi</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; background: #F2F2F7; color: #1C1C1E; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .card { background: #fff; border-radius: 24px; padding: 48px 32px; text-align: center; max-width: 480px; width: 100%; box-shadow: 0 8px 40px rgba(0,0,0,0.08); }
+  .icon { font-size: 64px; margin-bottom: 24px; }
+  h1 { font-size: 26px; font-weight: 800; color: #12457D; margin-bottom: 12px; letter-spacing: -0.5px; }
+  p { font-size: 15px; color: #6C6C70; line-height: 1.7; margin-bottom: 8px; }
+  .steps { background: #F2F2F7; border-radius: 16px; padding: 20px; margin: 24px 0; text-align: left; }
+  .step { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+  .step:last-child { margin-bottom: 0; }
+  .step-num { width: 28px; height: 28px; border-radius: 50%; background: #12457D; color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-text { font-size: 14px; color: #3C3C43; line-height: 1.5; padding-top: 4px; }
+  .btn { display: inline-block; background: #12457D; color: #fff; font-size: 15px; font-weight: 600; padding: 14px 32px; border-radius: 14px; text-decoration: none; margin-top: 8px; }
+  .btn:hover { opacity: 0.88; }
+  .footer { font-size: 12px; color: #8E8E93; margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">🎉</div>
+  <h1>Paiement réussi !</h1>
+  <p>Votre abonnement Trouvé Mac est maintenant actif.</p>
+  <p>Vous allez recevoir une confirmation par email.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Fermez cette page et revenez dans l'app Trouvé</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">Allez dans <strong>Réglages → Restaurer mon abonnement</strong></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Entrez votre email pour activer votre abonnement</div>
+    </div>
+  </div>
+
+  <a href="https://trouve-app.netlify.app" class="btn">Retour au site</a>
+
+  <p class="footer">Des questions ? <a href="mailto:trouve.app@gmail.com" style="color:#12457D;">trouve.app@gmail.com</a></p>
+</div>
+
+<script>
+  // Détecter la langue du navigateur
+  const lang = navigator.language?.split('-')[0] || 'fr';
+  const translations = {
+    en: {
+      title: 'Payment successful!',
+      sub1: 'Your Trouvé Mac subscription is now active.',
+      sub2: 'You will receive a confirmation by email.',
+      s1: 'Close this page and return to the Trouvé app',
+      s2: 'Go to <strong>Settings → Restore subscription</strong>',
+      s3: 'Enter your email to activate your subscription',
+      btn: 'Back to website',
+      footer: 'Questions? '
+    },
+    es: {
+      title: '¡Pago exitoso!',
+      sub1: 'Tu suscripción a Trouvé Mac está ahora activa.',
+      sub2: 'Recibirás una confirmación por correo electrónico.',
+      s1: 'Cierra esta página y vuelve a la app Trouvé',
+      s2: 'Ve a <strong>Ajustes → Restaurar suscripción</strong>',
+      s3: 'Ingresa tu email para activar tu suscripción',
+      btn: 'Volver al sitio',
+      footer: '¿Preguntas? '
+    }
+  };
+
+  if (lang !== 'fr' && translations[lang]) {
+    const t = translations[lang];
+    document.title = `Trouvé — ${t.title}`;
+    document.querySelector('h1').textContent = t.title;
+    document.querySelectorAll('p')[0].textContent = t.sub1;
+    document.querySelectorAll('p')[1].textContent = t.sub2;
+    document.querySelectorAll('.step-text')[0].textContent = t.s1;
+    document.querySelectorAll('.step-text')[1].innerHTML = t.s2;
+    document.querySelectorAll('.step-text')[2].textContent = t.s3;
+    document.querySelector('.btn').textContent = t.btn;
+  }
+</script>
+</body>
+</html>
